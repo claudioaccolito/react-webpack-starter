@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-
 module.exports = {
   entry: './src/index.js',
   module: {
@@ -10,27 +8,27 @@ module.exports = {
         use: ['babel-loader']
       },
       {
-				test: /\.(jpg|jpeg|gif|svg|png)$/,
-				exclude: /node_modules/,
-				loader: "url-loader?limit=1024&name=images/[name].[ext]"
+        test: /\.(jpg|jpeg|gif|svg|png)$/,
+        exclude: /node_modules/,
+        loader: "url-loader?limit=1024&name=images/[name].[ext]"
       },
       {
-				test: /\.less$/,
-				use: [
-					{
-						loader: "style-loader"
-					},
-					{
-						loader: "css-loader"
-					},
-					{
-						loader: "less-loader",
-						options: {
-							javascriptEnabled: true
-						}
-					}
-				]
-			}
+        test: /\.less$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "less-loader",
+            options: {
+              javascriptEnabled: true
+            }
+          }
+        ]
+      }
     ]
   },
   resolve: {
@@ -41,9 +39,6 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
   devServer: {
     contentBase: './dist',
     hot: true
