@@ -1,3 +1,7 @@
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
 module.exports = {
   entry: './src/index.js',
   module: {
@@ -10,7 +14,7 @@ module.exports = {
       {
         test: /\.(jpg|jpeg|gif|svg|png)$/,
         exclude: /node_modules/,
-        loader: "url-loader?limit=1024&name=images/[name].[ext]"
+        loader: "url-loader?limit=1024&name=img/[name].[ext]"
       },
       {
         test: /\.less$/,
@@ -42,5 +46,12 @@ module.exports = {
   devServer: {
     contentBase: './dist',
     hot: true
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Webpaaaaaaack',
+      template: './src/index.html'
+    })
+  ]
 };
